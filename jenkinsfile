@@ -4,12 +4,6 @@ pipeline {
     tools {
         nodejs 'NodeJS'
     }
-
-    environment {
-        DOCKER_CREDENTIALS = 'docker_credentials'
-        DOCKER_IMAGE = 'omarsalah123/learningrepo:v1.0'
-    }
-
     stages {
         stage('Build App') {
             steps {
