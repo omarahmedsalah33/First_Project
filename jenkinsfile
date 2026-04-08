@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS" 
+        nodejs "NodeJS" // make sure NodeJS is installed in Jenkins with this name
     }
+
     stages {
         stage('Build App') {
             steps {
@@ -14,7 +15,6 @@ pipeline {
                     }
                 }
             }
-        }    
         }
 
         stage('Build Docker Image') {
