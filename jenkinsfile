@@ -1,40 +1,43 @@
+// Load your external Groovy script
 def gv = load('script.groovy')
-pipeline{
-  agent any
-  tools{
-    nodejs 'NodeJs'
-  }
-  stages{
-    stage('build jar'){
-      script {gv.buildingapp()}
-      
+
+pipeline {
+    agent any
+    tools {
+        nodejs 'NodeJs'
     }
 
-    stage('run tests'){
-        script{gv.testingapp()}
-    }
-
-    stage('building image'){
-         script{gv.buildingimage()}
+    stages {
+        stage('Build App') {
+            steps {
+                script {
+                    gv.buildingapp()
+                }
+            }
         }
 
-    stage('deploying app'){
-      script{gv.deployingapp()}
-    }    
+        stage('Run Tests') {
+            steps {
+                script {
+                    gv.testingapp()
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    gv.buildingimage()
+                }
+            }
+        }
+
+        stage('Deploy App') {
+            steps {
+                script {
+                    gv.deployingapp()
+                }
+            }
+        }
     }
-
-
-
-
-
-
-
-
-
-  }
-
-
-
-
-
 }
