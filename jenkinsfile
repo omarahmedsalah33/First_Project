@@ -1,0 +1,40 @@
+def gv = load 'script.groovy'
+pipeline{
+  agent any
+  tools{
+    nodejs 'NodeJs'
+  }
+  stages{
+    stage('build jar'){
+      script {gv.buildingapp()}
+      
+    }
+
+    stage('run tests'){
+        script{gv.testingapp()}
+    }
+
+    stage('building image'){
+         script{gv.buildingimage()}
+        }
+
+    stage('deploying app'){
+      script{gv.deployingapp()}
+    }    
+    }
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+}
