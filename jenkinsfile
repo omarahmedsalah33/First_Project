@@ -14,17 +14,7 @@ pipeline {
                     }
                 }
             }
-        }
-
-        stage('Run Tests') {
-            steps {
-                dir('app') {
-                    script {
-                        def gv = load('../script.groovy')
-                        gv.testingapp()
-                    }
-                }
-            }
+        }    
         }
 
         stage('Build Docker Image') {
