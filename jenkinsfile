@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('Build App') {
             steps {
-                dir('app') {
-                    script {
-                        def gv = load('script.groovy')
+                script {
+                    def gv = load('script.groovy')  // load from workspace root
+                    dir('app') {                     // run npm inside app folder
                         gv.buildapp()
                     }
                 }
