@@ -4,7 +4,7 @@ def gv = load('script.groovy')
 pipeline {
     agent any
     tools {
-        nodejs 'NodeJS'
+        nodejs 'NodeJs25.9.0'
     }
 
     stages {
