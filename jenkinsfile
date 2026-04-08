@@ -3,10 +3,12 @@ def gv = load('script.groovy')
 
 pipeline {
     agent any
+
     stages {
         stage('Build App') {
             steps {
                 script {
+                    // Call the method from script.groovy
                     gv.buildingapp()
                 }
             }
