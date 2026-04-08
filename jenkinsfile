@@ -2,17 +2,15 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS'
+        nodejs "NodeJS" 
     }
     stages {
         stage('Build App') {
             steps {
-                node {
-                    dir('app') {
-                        script {
-                            def gv = load('../script.groovy') // load your groovy script from root
-                            gv.buildapp()
-                        }
+                dir('app') {
+                    script {
+                        def gv = load('../script.groovy')
+                        gv.buildapp()
                     }
                 }
             }
@@ -20,12 +18,10 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                node {
-                    dir('app') {
-                        script {
-                            def gv = load('../script.groovy')
-                            gv.testingapp()
-                        }
+                dir('app') {
+                    script {
+                        def gv = load('../script.groovy')
+                        gv.testingapp()
                     }
                 }
             }
@@ -33,22 +29,18 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                node {
-                    script {
-                        def gv = load('../script.groovy')
-                        gv.buildimage()
-                    }
+                script {
+                    def gv = load('../script.groovy')
+                    gv.buildimage()
                 }
             }
         }
 
         stage('Deploy App') {
             steps {
-                node {
-                    script {
-                        def gv = load('../script.groovy')
-                        gv.deployingapp()
-                    }
+                script {
+                    def gv = load('../script.groovy')
+                    gv.deployingapp()
                 }
             }
         }
