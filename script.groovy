@@ -14,6 +14,6 @@ def testingapp(){
 }
 
 def deployingapp(){
-     sh 'docker compose up'
+     sh 'docker-compose up -d'
 }
  return this
