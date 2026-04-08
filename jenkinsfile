@@ -3,10 +3,6 @@ def gv = load('script.groovy')
 
 pipeline {
     agent any
-    tools {
-        nodejs 'NodeJs25.9.0'
-    }
-
     stages {
         stage('Build App') {
             steps {
