@@ -6,9 +6,8 @@ pipeline {
         stage('Build App') {
             steps {
                 script {
-                    // Load your external Groovy script inside script block
                     def gv = load('script.groovy')
-                    gv.buildingapp()
+                    gv.buildapp()
                 }
             }
         }
@@ -26,7 +25,7 @@ pipeline {
             steps {
                 script {
                     def gv = load('script.groovy')
-                    gv.buildingimage()
+                    gv.buildimage()
                 }
             }
         }
