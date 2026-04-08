@@ -1,14 +1,12 @@
-// Load your external Groovy script
-def gv = load('script.groovy')
-
 pipeline {
     agent any
 
     stages {
         stage('Build App') {
             steps {
-                script {
-                    // Call the method from script.groovy
+                node {
+                    // Load your external Groovy script
+                    def gv = load('script.groovy')
                     gv.buildingapp()
                 }
             }
@@ -16,7 +14,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                script {
+                node {
+                    def gv = load('script.groovy')
                     gv.testingapp()
                 }
             }
@@ -24,7 +23,8 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
+                node {
+                    def gv = load('script.groovy')
                     gv.buildingimage()
                 }
             }
@@ -32,7 +32,8 @@ pipeline {
 
         stage('Deploy App') {
             steps {
-                script {
+                node {
+                    def gv = load('script.groovy')
                     gv.deployingapp()
                 }
             }
