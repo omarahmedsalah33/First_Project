@@ -10,7 +10,7 @@ pipeline {
             steps {
                 dir('app') {
                     script {
-                        def gv = load('../script.groovy')
+                        def gv = load('script.groovy')
                         gv.buildapp()
                     }
                 }
@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def gv = load('../script.groovy')
+                    def gv = load('script.groovy')
                     gv.buildimage()
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy App') {
             steps {
                 script {
-                    def gv = load('../script.groovy')
+                    def gv = load('script.groovy')
                     gv.deployingapp()
                 }
             }
