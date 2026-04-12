@@ -1,21 +1,17 @@
 @Library('jenkins-shared-library') _
 pipeline {
     agent any
-
     tools {
-        nodejs "NodeJS" // make sure NodeJS is installed in Jenkins with this name
+        nodejs "NodeJS"
     }
-
     stages {
         stage('Build App') {
             steps {
                 script {
-                     Builapp()
-                    }
+                    Builapp()
                 }
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 script {
@@ -23,9 +19,7 @@ pipeline {
                 }
             }
         }
-
     }
-
     post {
         success {
             echo 'Pipeline finished successfully!'
