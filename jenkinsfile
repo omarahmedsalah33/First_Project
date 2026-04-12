@@ -15,7 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    Buildimage('omarsalah123/learningrepo:v1.0')
+                    BuildImage('omarsalah123/learningrepo:v1.0')
                 }
             }
         }
